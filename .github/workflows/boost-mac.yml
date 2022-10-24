@@ -6,23 +6,10 @@ on:
   pull_request:
     branches: [ master ]
 
-
 jobs:
   nightly-macOS-x86_64:
     strategy:
       fail-fast: false
-      matrix:
-        build_type:
-          - type: Debug
-            warn_as_err: ON
-          - type: Release
-            warn_as_err: OFF
-
-        shared_libs:
-          - toggle: OFF
-            name: Static
-          - toggle: ON
-            name: Shared
 
     runs-on: macos-latest
 
