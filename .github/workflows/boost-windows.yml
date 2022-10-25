@@ -7,11 +7,11 @@ jobs:
     strategy:
       matrix:
         os:
-          name : "windows-2019"
-          boost_url: "https://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1_76_0.tar.gz"
-          boost_archive_name: "boost_1_76_0.tar.gz"
-          boost_folder_name : "boost_1_76_0"
-    runs-on: ${{matrix.os.name}}
+          - image : windows-2019
+            boost_url: 'https://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1_76_0.tar.gz'
+            boost_archive_name: 'boost_1_76_0.tar.gz'
+            boost_folder_name : 'boost_1_76_0'
+    runs-on: ${{matrix.os.image}}
     steps:
       - uses: actions/checkout@v2
 
