@@ -8,21 +8,27 @@ on:
 
 jobs:
   nightly-Windows:
-
-    runs-on: windows-2019
+    strategy:
+      matrix:
+        os:
+          name : "windows-2019"
+          boost_url: "https://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1_76_0.tar.gz"
+          boost_archive_name: "boost_1_76_0.tar.gz"
+          boost_folder_name : "boost_1_76_0"
+    runs-on: ${{matrix.os.name}}
     steps:
       - uses: actions/checkout@v2
 
       - name: Install Boost
         run: |
           Invoke-WebRequest `
-              "https://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1_76_0.tar.gz" `
-              -OutFile "boost_1_76_0.tar.gz" `
+              "${{matrix.os.boost_url}}" `
+              -OutFile "${{matrix.os.boost_archive_name}}" `
               -UserAgent "''"
-          tar xzf boost_1_76_0.tar.gz
-          rm boost_1_76_0.tar.gz
-          cd boost_1_76_0
+          tar xzf ${{matrix.os.boost_archive_name}}
+          rm ${{matrix.os.boost_archive_name}}
+          cd ${{matrix.os.boost_folder_name}}
           .\bootstrap.bat
           .\b2
           cd ..
-          Remove-Item boost_1_76_0 -Recurse -Force
+          Remove-Item ${{matrix.os.boost_folder_name}} -Recurse -Force
