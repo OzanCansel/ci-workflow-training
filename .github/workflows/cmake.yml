@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ master ]
   workflow_dispatch:
+    inputs:
+      run_tests:
+        type: boolean
+        description: Enable/Disable test stage
+        default: true
   schedule:
     - cron: '0 * * * *'
 
@@ -35,7 +40,8 @@ jobs:
       run: echo Configured
 
     - name: Echo
-      run : echo "github.event_name " ${{ github.event_name == 'schedule' }}
+      if: ${{ inputs.run_tests }} || ${{ github.event_name == 'schedule' }}
+      run : echo "github.event_name " ${{ github.event_name }}
 
     - name: Build
       # Build your program with the given configuration
