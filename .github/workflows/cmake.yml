@@ -40,7 +40,7 @@ jobs:
       run: echo Configured
 
     - name: Echo
-      if: ${{ inputs.run_tests == 'true' }} || ${{ github.event_name == 'schedule' }}
+      if: ${{ inputs.run_tests == 'true' || github.event_name == 'schedule' }}
       run : echo "github.event_name " ${{ github.event_name }} " inputs.run_tests" ${{inputs.run_tests}}
 
     - name: Build
