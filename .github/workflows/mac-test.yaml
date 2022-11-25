@@ -1,0 +1,18 @@
+name: nightly-macOS-x86_64
+
+on: [workflow_dispatch]
+
+jobs:
+  nightly-macOS-x86_64:
+    strategy:
+      fail-fast: false
+
+    runs-on: macos-latest
+
+    env:
+      OPENSSL_ROOT_DIR: /usr/local/opt/openssl/
+
+    steps:
+      - name: Install Dependencies
+        run: |
+          grep -Po "." <(echo "Test")
