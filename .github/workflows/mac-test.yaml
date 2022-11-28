@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  nightly-macOS-x86_64:
+  macos-test:
     strategy:
       fail-fast: false
 
