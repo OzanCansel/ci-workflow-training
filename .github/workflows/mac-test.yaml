@@ -20,7 +20,7 @@ jobs:
         run: |
           echo "Test"
           which sort
-          # which printf
+          which printf
           # version_greater_equal()
           # {
           #    printf '%s\n%s\n' "$2" "$1" | sort --check=quiet --version-sort
