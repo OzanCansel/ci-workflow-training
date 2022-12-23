@@ -18,10 +18,13 @@ jobs:
     steps:
       - name: Install Dependencies
         run: |
-          HZ_VERSION="4.1.1"
+          function version_greater_equal()
+          {
+              printf '%s\n%s\n' "$2" "$1" | sort --check=quiet --version-sort
+          }
           
-          if [ ${HZ_VERSION} != 4.@1* ]; then
-              echo "Entered"
-          else
-              echo "Does not enter".
-          fi
+          HZ_VERSION=4.1.3
+          
+          version_greater_equal ${HZ_VERSION} 4.2.0
+          
+          echo $?
