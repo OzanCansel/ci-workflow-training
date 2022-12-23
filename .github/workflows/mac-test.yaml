@@ -19,7 +19,7 @@ jobs:
       - name: Install Dependencies
         run: |
           echo "Test"
-          # which sort
+          which sort
           # which printf
           # version_greater_equal()
           # {
