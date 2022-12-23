@@ -21,7 +21,7 @@ jobs:
           echo "Test"
           which sort
           which printf
-          version_greater_equal()
+          function version_greater_equal()
           {
              printf '%s\n%s\n' "$2" "$1" | sort --check=quiet --version-sort
           }
