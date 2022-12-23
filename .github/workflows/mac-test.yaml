@@ -18,6 +18,9 @@ jobs:
     steps:
       - name: Install Dependencies
         run: |
+          which sort
+          which printf
+          
           version_greater_equal()
           {
               printf '%s\n%s\n' "$2" "$1" | sort --check=quiet --version-sort
