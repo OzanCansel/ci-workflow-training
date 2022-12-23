@@ -18,5 +18,10 @@ jobs:
     steps:
       - name: Install Dependencies
         run: |
-          brew install grep
-          ggrep -Po "." <(echo "Test")
+          HZ_VERSION="4.1.1"
+          
+          if [[ ${HZ_VERSION} != 4.@{0|1} ]]; then
+              echo "Entered"
+          else
+              echo "Does not enter".
+          fi
