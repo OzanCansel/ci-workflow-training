@@ -16,6 +16,9 @@ jobs:
       OPENSSL_ROOT_DIR: /usr/local/opt/openssl/
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Install Dependencies
         run: |
           ./mac.sh
