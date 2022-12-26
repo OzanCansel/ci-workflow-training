@@ -9,3 +9,10 @@ function version_greater_equal() {
 HZ_VERSION=4.2.3
 version_greater_equal ${HZ_VERSION} 4.2.0
 echo $?
+
+LAST_UPDATED=$(date -r . "+%s")
+CURRENT_DATE=$(date +%s)
+
+ELAPSED_SEC=((${LAST_UPDATED} - ${CURRENT}))
+
+echo ${ELAPSED_SEC}
