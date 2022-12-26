@@ -13,6 +13,6 @@ echo $?
 LAST_UPDATED=$(date -r . "+%s")
 CURRENT_DATE=$(date +%s)
 
-ELAPSED_SEC=$((${LAST_UPDATED} - ${CURRENT}))
+ELAPSED_SEC=((${LAST_UPDATED} - ${CURRENT}))
 
 echo ${ELAPSED_SEC}
