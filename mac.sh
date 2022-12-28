@@ -17,3 +17,5 @@ CURRENT_DATE=$(date +%s)
 ELAPSED_SEC=$(( ${LAST_UPDATED} - ${CURRENT_DATE} ))
 
 echo ${ELAPSED_SEC}
+
+echo "Number of cpus : " $(nproc)
