@@ -18,4 +18,4 @@ ELAPSED_SEC=$(( ${LAST_UPDATED} - ${CURRENT_DATE} ))
 
 echo ${ELAPSED_SEC}
 
-echo "Number of cpus : " $(nproc)
+echo "Number of cpus : " $(getconf _NPROCESSORS_ONLN)
