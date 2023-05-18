@@ -20,12 +20,10 @@ jobs:
       with:
         usesh: true
         prepare: |
-          pkg install -y curl
+          pkg install -y curl gcc git
 
         run: |
-          pwd
           ls -lah
-          whoami
-          env
-          freebsd-version
-          ls qwejhqwdhkjbnwd
+          git clone https://github.com/OzanCansel/apue-631.git
+          cd apue-631/bbcp
+          make
