@@ -1,24 +1,27 @@
-name: nightly-macOS-x86_64
+name: Test
 
-on:
-  push:
-    branches: [ master ]
-  workflow_dispatch:
+on: [push]
 
 jobs:
-  macos-test:
-    strategy:
-      fail-fast: false
-
-    runs-on: macos-latest
-
+  test:
+    runs-on: macos-12
+    name: A job to run test in FreeBSD
     env:
-      OPENSSL_ROOT_DIR: /usr/local/opt/openssl/
-
+      MYTOKEN : ${{ secrets.MYTOKEN }}
+      MYTOKEN2: "value2"
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    - name: Test in FreeBSD
+      id: test
+      uses: vmactions/freebsd-vm@v0
+      with:
+        usesh: true
+        prepare: |
+          pkg install -y curl
 
-      - name: Install Dependencies
         run: |
-          ./mac.sh
+          pwd
+          ls -lah
+          whoami
+          env
+          freebsd-version
