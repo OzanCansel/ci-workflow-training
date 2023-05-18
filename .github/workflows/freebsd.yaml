@@ -17,10 +17,10 @@ jobs:
           - version: 13.0
           - version: 13.1
 
-    name: A job to run test in FreeBSD
+    name: FreeBSD
     steps:
     - uses: actions/checkout@v3
-    - name: Build FreeBSD
+    - name: Build
       id: test
       uses: vmactions/freebsd-vm@v0
       with:
