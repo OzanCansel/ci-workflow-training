@@ -1,2 +1,2 @@
 step:
-  echo "Hello world"
+  echo "Hello world!"
