@@ -39,8 +39,7 @@ jobs:
                          tinycdb \
                          screen \
                          bash
-          portsnap fetch extract --not-running-from-cron
-          portsnap fetch update
+          git clone https://git.FreeBSD.org/ports.git -b 2023Q1 /usr/ports
 
           cd /usr/ports/databases/sqlite3
           make BATCH=yes OPTIONS_SET=STATIC install clean
