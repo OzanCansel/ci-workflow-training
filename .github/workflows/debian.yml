@@ -1,0 +1,55 @@
+name: Debian
+
+on:
+  pull_request_target:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
+    # You can convert this to a matrix build if you need cross-platform coverage.
+    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+    runs-on: ubuntu-latest
+    container: debian:11
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        submodules: 'true'
+
+    - name: Install Dependencies
+      run : |
+            apt-get update -y
+            apt-get install -y net-tools \
+                               git \
+                               automake \
+                               g++ \
+                               automake \
+                               kmod \
+                               libpcap \
+                               libpcap0.8 \
+                               libpcap0.8-dev \
+                               autoconf \
+                               libtool \
+                               gettext \
+                               cmake \
+                               unzip \
+                               libnetfilter-queue-dev \
+                               libmaxminddb-dev \
+                               libyaml-cpp-dev \
+                               libcdb-dev \
+                               libssl \
+                               libssl-dev \
+                               libz-dev \
+                               libsqlite3-dev
+
+            ln -s /usr/bin/make /usr/bin/gmake
+      
+    - name: Configure CMake
+      # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
+      # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
+      run: uname -a
+      
