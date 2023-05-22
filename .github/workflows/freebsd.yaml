@@ -26,10 +26,27 @@ jobs:
       with:
         usesh: true
         prepare: |
-          pkg install -y curl gcc git
+          pkg install -y curl \
+                         gcc \
+                         git \
+                         gmake \
+                         cmake \
+                         autoconf \
+                         automake \
+                         libtool \
+                         libiconv \
+                         gettext \
+                         openssl \
+                         libmaxminddb \
+                         tinycdb \
+                         screen \
+                         bash
+          portsnap fetch extract
+          portsnap fetch update
+
+          cd /usr/ports/databases/sqlite3
+          make BATCH=yes OPTIONS_SET=STATIC install clean
 
         run: |
           ls -lah
-          git clone https://github.com/OzanCansel/apue-631.git
-          cd apue-631/bbcp
-          make
+          ls -lh /usr/local/lib/libsqlite3*
