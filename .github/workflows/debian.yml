@@ -27,8 +27,6 @@ jobs:
                                g++ \
                                automake \
                                kmod \
-                               libpcap \
-                               libpcap0.8 \
                                libpcap0.8-dev \
                                autoconf \
                                libtool \
