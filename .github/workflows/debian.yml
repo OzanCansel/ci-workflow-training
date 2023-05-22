@@ -37,7 +37,6 @@ jobs:
                                libmaxminddb-dev \
                                libyaml-cpp-dev \
                                libcdb-dev \
-                               libssl \
                                libssl-dev \
                                libz-dev \
                                libsqlite3-dev
