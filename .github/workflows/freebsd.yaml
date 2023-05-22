@@ -13,9 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         release:
-          - version: 12.3
           - version: 13.0
-          - version: 13.1
 
     name: FreeBSD
     steps:
@@ -41,7 +39,7 @@ jobs:
                          tinycdb \
                          screen \
                          bash
-          portsnap fetch extract
+          portsnap fetch extract --not-running-from-cron
           portsnap fetch update
 
           cd /usr/ports/databases/sqlite3
